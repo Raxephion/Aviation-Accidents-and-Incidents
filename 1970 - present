@@ -33,5 +33,4 @@ print(df.head())
 
 df = df.sort_values(['Year'], ascending=[1])
 
-
 ax = df.plot(x='Year', y = 'Number of incidents[58]', title = 'Aviation Accidents and Incidents', figsize=(10,7), grid=True)
