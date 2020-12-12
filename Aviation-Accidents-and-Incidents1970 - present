@@ -1,22 +1,9 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Nov  8 15:51:59 2020
-
-@author: Pierre-Henri Rossouw
-
-
-Aviation Accident and Incident rate from 1970
-
-
-Country response rate
-
-
-"""
 import pandas as pd
 from bs4 import BeautifulSoup 
 import requests
 
 wikiurl='https://en.wikipedia.org/wiki/Aviation_accidents_and_incidents#Statistics'
+
 table_class="wikitable sortable jquery-tablesorter"
 response=requests.get(wikiurl)
 print(response.status_code)
@@ -27,10 +14,14 @@ indiatable=soup.find('table',{'class':"wikitable"})
 df=pd.read_html(str(indiatable))
 # convert list to dataframe
 df=pd.DataFrame(df[0])
-print(df.head())
+print(df.head)
 
 
 
 df = df.sort_values(['Year'], ascending=[1])
+for i in df:
+  df[i] = pd.to_numeric(df[i],errors='coerce')
 
-ax = df.plot(x='Year', y = 'Number of incidents[58]', title = 'Aviation Accidents and Incidents', figsize=(10,7), grid=True)
+ax = df.plot(x='Year', y = 'Deaths[57]', title = 'Aviation Accidents and Incidents', figsize=(20,20), 
+grid=True)
+
