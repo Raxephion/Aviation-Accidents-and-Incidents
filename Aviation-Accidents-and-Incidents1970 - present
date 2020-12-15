@@ -22,6 +22,6 @@ df = df.sort_values(['Year'], ascending=[1])
 for i in df:
   df[i] = pd.to_numeric(df[i],errors='coerce')
 
-ax = df.plot(x='Year', y = 'Deaths[57]', title = 'Aviation Accidents and Incidents', figsize=(20,20), 
+ax = df.plot(x='Year', y = 'Deaths[57]', title = 'Aviation Accidents and Incidents', figsize=(8,8), 
 grid=True)
 
